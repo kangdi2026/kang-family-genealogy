@@ -4,7 +4,7 @@
 const familyData = {
     ancestralHome: '山东省聊城市高唐县赵寨子乡康口村',
     familyName: '康氏家族',
-    compiler: '康氏第二十代 康迪',
+    compiler: '第二十代世孙 康迪',
 
     // 家族成员数据
     // 数据格式示例：
