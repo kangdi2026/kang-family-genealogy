@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>康氏家族族谱</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 传统族谱首页 -->
+    <div id="home-page" class="page active">
+        <div class="paper-bg">
+            <div class="cover-page">
+
+                <!-- 装饰顶部 -->
+                <div class="decoration-top">✦ ✧ ✦</div>
+
+                <!-- 主标题区域 -->
+                <div class="title-area">
+
+                    <!-- 右侧竖排：祖籍 -->
+                    <div class="vertical-column">
+                        <div class="vertical-box traditional-border">
+                            <div class="vertical-text">
+                                <div class="vertical-label">祖籍</div>
+                                <div class="vertical-content">山东省聊城市高唐县赵寨子乡康口村</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 中间主标题 -->
+                    <div class="vertical-column center-column">
+                        <div class="main-title-box traditional-border">
+                            <div class="vertical-text main-title">康氏家族族谱</div>
+                        </div>
+                    </div>
+
+                    <!-- 左侧竖排：编制 -->
+                    <div class="vertical-column">
+                        <div class="vertical-box traditional-border">
+                            <div class="vertical-text">
+                                <div class="vertical-label">编制</div>
+                                <div class="vertical-content">第二代 康迪</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 印章 -->
+                <div class="seal-area">
+                    <div class="seal-box">
+                        <div class="seal-text">康氏<br>族谱</div>
+                    </div>
+                </div>
+
+                <!-- 年份 -->
+                <div class="year-area">
+                    <span class="year-text">公元 <span id="current-year"></span> 年</span>
+                </div>
+
+                <!-- 装饰底部 -->
+                <div class="decoration-bottom">✦ ✧ ✦</div>
+
+            </div>
+
+            <!-- 功能按钮 -->
+            <div class="action-buttons">
+                <button class="traditional-button" onclick="showPage('tree')">查阅族谱</button>
+                <button class="traditional-button" onclick="showPage('search')">搜索成员</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 族谱树页面 -->
+    <div id="tree-page" class="page">
+        <div class="paper-bg page-content">
+            <div class="page-header traditional-border">
+                <h1 class="header-title">康氏家族世系图</h1>
+                <button class="back-button" onclick="showPage('home')">返回首页</button>
+            </div>
+
+            <div class="tree-container">
+                <div id="tree-content" class="tree-content">
+                    <div class="waiting-data">
+                        <p class="waiting-text">请提供家族成员信息</p>
+                        <p class="waiting-hint">以便生成完整的家族树状图</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 搜索页面 -->
+    <div id="search-page" class="page">
+        <div class="paper-bg page-content">
+            <div class="page-header traditional-border">
+                <h1 class="header-title">搜索成员</h1>
+                <button class="back-button" onclick="showPage('home')">返回首页</button>
+            </div>
+
+            <div class="search-section">
+                <div class="search-bar traditional-border">
+                    <div class="search-input-wrapper">
+                        <input type="text"
+                               id="search-input"
+                               class="search-input"
+                               placeholder="输入姓名、世代搜索"
+                               onkeypress="handleSearchEnter(event)">
+                        <span class="search-icon" onclick="performSearch()">🔍</span>
+                    </div>
+                    <div class="search-buttons">
+                        <button class="search-btn" onclick="performSearch()">搜索</button>
+                        <button class="clear-btn" onclick="clearSearch()">清空</button>
+                    </div>
+                </div>
+
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成员详情页面 -->
+    <div id="member-page" class="page">
+        <div class="paper-bg page-content">
+            <div class="page-header traditional-border">
+                <h1 class="header-title">成员详情</h1>
+                <button class="back-button" onclick="history.back()">返回</button>
+            </div>
+
+            <div id="member-detail" class="member-detail"></div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
