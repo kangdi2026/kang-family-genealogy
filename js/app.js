@@ -7,7 +7,14 @@ let searchResults = []
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
     // 设置当前年份
-    document.getElementById('current-year').textContent = new Date().getFullYear()
+    const currentYear = new Date().getFullYear()
+    document.getElementById('current-year').textContent = currentYear
+
+    // 设置家族介绍页面的年份
+    const introYear = document.getElementById('intro-year')
+    if (introYear) {
+        introYear.textContent = currentYear
+    }
 
     // 初始化首页
     showPage('home')

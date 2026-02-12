@@ -500,3 +500,83 @@ body {
         font-size: 22px;
     }
 }
+
+/* 家族介绍页面样式 */
+.intro-content {
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-card {
+    background-color: #FFF8DC;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+.intro-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #8B4513;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #D2691E;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 17px;
+    color: #654321;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+.intro-text p {
+    margin-bottom: 15px;
+    text-indent: 2em;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+.intro-text strong {
+    font-size: 20px;
+    color: #8B4513;
+    font-weight: bold;
+}
+
+/* 家训样式 */
+.family-motto p {
+    text-align: center;
+    text-indent: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #8B4513;
+    letter-spacing: 4px;
+    margin: 10px 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .intro-content {
+        padding: 20px 10px;
+    }
+    
+    .intro-card {
+        padding: 20px;
+    }
+    
+    .intro-title {
+        font-size: 22px;
+    }
+    
+    .intro-text {
+        font-size: 15px;
+    }
+    
+    .family-motto p {
+        font-size: 18px;
+    }
+}

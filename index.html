@@ -67,8 +67,72 @@
 
             <!-- 功能按钮 -->
             <div class="action-buttons">
+                <button class="traditional-button" onclick="showPage('intro')">家族介绍</button>
                 <button class="traditional-button" onclick="showPage('tree')">查阅族谱</button>
                 <button class="traditional-button" onclick="showPage('search')">搜索成员</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 家族介绍页面 -->
+    <div id="intro-page" class="page">
+        <div class="paper-bg page-content">
+            <div class="page-header traditional-border">
+                <h1 class="header-title">家族介绍</h1>
+                <button class="back-button" onclick="showPage('home')">返回首页</button>
+            </div>
+
+            <div class="intro-content">
+
+                <!-- 祖籍信息 -->
+                <div class="intro-card traditional-border">
+                    <div class="intro-title">祖籍地</div>
+                    <div class="intro-text">
+                        <p>山东省聊城市高唐县赵寨子乡康口村</p>
+                    </div>
+                </div>
+
+                <!-- 家族历史 -->
+                <div class="intro-card traditional-border">
+                    <div class="intro-title">家族历史</div>
+                    <div class="intro-text">
+                        <p>康氏家族源远流长，世代相传。祖籍山东省聊城市高唐县赵寨子乡康口村，世代耕读传家，勤劳朴实。</p>
+                        <p>家族秉承"忠厚传家久，诗书继世长"的祖训，注重教育，崇尚孝道，历代子孙均以此为训，代代相传。</p>
+                    </div>
+                </div>
+
+                <!-- 家族精神 -->
+                <div class="intro-card traditional-border">
+                    <div class="intro-title">家族精神</div>
+                    <div class="intro-text">
+                        <p><strong>忠</strong> - 忠于国家，忠于家族</p>
+                        <p><strong>孝</strong> - 孝敬父母，尊敬长辈</p>
+                        <p><strong>仁</strong> - 仁爱待人，和睦乡邻</p>
+                        <p><strong>义</strong> - 重情重义，诚信为本</p>
+                    </div>
+                </div>
+
+                <!-- 家训 -->
+                <div class="intro-card traditional-border">
+                    <div class="intro-title">家训</div>
+                    <div class="intro-text family-motto">
+                        <p>忠厚传家久</p>
+                        <p>诗书继世长</p>
+                        <p>勤俭持家业</p>
+                        <p>和睦享安康</p>
+                    </div>
+                </div>
+
+                <!-- 族谱编制信息 -->
+                <div class="intro-card traditional-border">
+                    <div class="intro-title">族谱编制</div>
+                    <div class="intro-text">
+                        <p>编制人：第二十代世孙 康迪</p>
+                        <p>编制时间：公元 <span id="intro-year"></span> 年</p>
+                        <p>族谱宗旨：记录家族世系，传承家族文化，弘扬家族精神，凝聚家族力量。</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
