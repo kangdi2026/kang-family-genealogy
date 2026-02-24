@@ -69,6 +69,8 @@
             <div class="action-buttons">
                 <button class="traditional-button" onclick="showPage('intro')">家族介绍</button>
                 <button class="traditional-button" onclick="showPage('tree')">查阅族谱</button>
+                <button class="traditional-button" onclick="showPage('generation')">字辈记录</button>
+                <button class="traditional-button" onclick="showPage('photos')">欢聚照片</button>
                 <button class="traditional-button" onclick="showPage('search')">搜索成员</button>
             </div>
         </div>
@@ -158,6 +160,97 @@
         </div>
     </div>
 
+    <!-- 字辈记录页面 -->
+    <div id="generation-page" class="page">
+        <div class="paper-bg page-content">
+            <div class="page-header traditional-border">
+                <h1 class="header-title">字辈记录</h1>
+                <div class="header-actions">
+                    <button class="back-button" onclick="showPage('home')">返回首页</button>
+                    <button class="edit-button" id="edit-generation-btn" onclick="toggleGenerationEdit()">编辑</button>
+                </div>
+            </div>
+
+            <div class="generation-content">
+                <div class="generation-intro traditional-border">
+                    <div class="intro-title">康氏字辈</div>
+                    <div class="intro-text">
+                        <p>字辈是家族世代相传的标识，每代人名字中都会包含相应的字辈用字。</p>
+                    </div>
+                </div>
+
+                <div id="generation-list" class="generation-list"></div>
+
+                <!-- 编辑模式 -->
+                <div id="generation-edit-area" class="generation-edit-area" style="display:none;">
+                    <div class="intro-card traditional-border">
+                        <div class="intro-title">编辑字辈</div>
+                        <div class="edit-instruction">
+                            <p>每行输入5个字为一组，每组代表一个辈分序列。</p>
+                            <p>例如：德文明志勇</p>
+                        </div>
+                        <textarea id="generation-textarea" class="intro-textarea" placeholder="请输入字辈，每5个字一行"></textarea>
+                    </div>
+                </div>
+
+                <!-- 保存按钮 -->
+                <div class="save-actions" id="generation-save-actions" style="display:none;">
+                    <button class="save-button" onclick="saveGenerationContent()">保存</button>
+                    <button class="cancel-button" onclick="cancelGenerationEdit()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 欢聚照片页面 -->
+    <div id="photos-page" class="page">
+        <div class="paper-bg page-content">
+            <div class="page-header traditional-border">
+                <h1 class="header-title">欢聚照片</h1>
+                <div class="header-actions">
+                    <button class="back-button" onclick="showPage('home')">返回首页</button>
+                    <button class="edit-button" id="upload-photo-btn" onclick="togglePhotoUpload()">上传照片</button>
+                </div>
+            </div>
+
+            <div class="photos-content">
+                <!-- 照片文件夹列表 -->
+                <div id="photo-folders" class="photo-folders"></div>
+
+                <!-- 当前文件夹的照片 -->
+                <div id="photo-gallery" class="photo-gallery"></div>
+
+                <!-- 上传照片区域 -->
+                <div id="photo-upload-area" class="photo-upload-area" style="display:none;">
+                    <div class="intro-card traditional-border">
+                        <div class="intro-title">上传照片</div>
+                        <div class="upload-form">
+                            <div class="form-group">
+                                <label>文件夹名称：</label>
+                                <input type="text" id="folder-name-input" placeholder="例如：2026年春节聚会" class="form-input">
+                                <button class="small-button" onclick="createFolder()">创建新文件夹</button>
+                            </div>
+                            <div class="form-group">
+                                <label>选择文件夹：</label>
+                                <select id="folder-select" class="form-select">
+                                    <option value="">请选择文件夹</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>选择照片：</label>
+                                <input type="file" id="photo-file-input" accept="image/*" multiple class="form-file">
+                            </div>
+                            <div class="form-group">
+                                <button class="save-button" onclick="uploadPhotos()">上传</button>
+                                <button class="cancel-button" onclick="cancelPhotoUpload()">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 族谱树页面 -->
     <div id="tree-page" class="page">
         <div class="paper-bg page-content">
@@ -224,6 +317,8 @@
     <script src="js/data.js"></script>
     <script src="js/cloudbase-config.js"></script>
     <script src="js/intro-edit.js"></script>
+    <script src="js/generation-edit.js"></script>
+    <script src="js/photos-manage.js"></script>
     <script src="js/app.js"></script>
 
 </body>

@@ -672,3 +672,241 @@ body {
 .intro-content.edit-mode .intro-textarea {
     display: block !important;
 }
+
+/* 字辈记录页面样式 */
+.generation-content {
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.generation-intro {
+    background-color: #FFF8DC;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.generation-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.generation-item {
+    background-color: #FFF8DC;
+    border: 2px solid #D2691E;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.generation-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(139, 69, 19, 0.3);
+}
+
+.generation-number {
+    font-size: 18px;
+    color: #8B4513;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.generation-chars {
+    font-size: 32px;
+    color: #654321;
+    font-weight: bold;
+    letter-spacing: 8px;
+    margin: 15px 0;
+}
+
+.generation-char {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.edit-instruction {
+    background-color: #FFFACD;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-left: 4px solid #D2691E;
+}
+
+.edit-instruction p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #654321;
+    text-indent: 0;
+}
+
+/* 欢聚照片页面样式 */
+.photos-content {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-folders {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.folder-item {
+    background: linear-gradient(135deg, #D2691E 0%, #8B4513 100%);
+    color: #FFF8DC;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #654321;
+}
+
+.folder-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);
+}
+
+.folder-item.active {
+    background: linear-gradient(135deg, #654321 0%, #4A2C1A 100%);
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.photo-item {
+    position: relative;
+    border: 3px solid #D2691E;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #FFF8DC;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.4);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-info {
+    padding: 10px;
+    background-color: #FFF8DC;
+    text-align: center;
+}
+
+.photo-name {
+    font-size: 14px;
+    color: #654321;
+    margin-bottom: 5px;
+}
+
+.photo-date {
+    font-size: 12px;
+    color: #A0522D;
+}
+
+/* 上传表单样式 */
+.upload-form {
+    padding: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8B4513;
+    margin-bottom: 10px;
+}
+
+.form-input,
+.form-select,
+.form-file {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #D2691E;
+    border-radius: 4px;
+    background-color: #FFFACD;
+    color: #654321;
+    font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #8B4513;
+    box-shadow: 0 0 8px rgba(139, 69, 19, 0.3);
+}
+
+.small-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #D2691E;
+    color: #FFF8DC;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s;
+}
+
+.small-button:hover {
+    background-color: #8B4513;
+}
+
+.photo-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #A0522D;
+}
+
+.photo-empty-text {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.photo-empty-hint {
+    font-size: 16px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .generation-list {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .photo-item img {
+        height: 150px;
+    }
+
+    .folder-item {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
