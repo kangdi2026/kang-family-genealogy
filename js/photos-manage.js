@@ -8,6 +8,7 @@ let isPhotoUploadMode = false
 let photosCloudbaseInitialized = false
 let photosCollection = null
 let cloudStorage = null
+let cloudApp = null
 
 // 当前选中的文件夹
 let currentFolder = null
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cloudbase) {
         photosCollection = cloudbase.db.collection('photo_folders')
         cloudStorage = cloudbase.app.uploadFile
+        cloudApp = cloudbase.app
         photosCloudbaseInitialized = true
         console.log('照片管理云数据库已连接')
 
@@ -126,14 +128,41 @@ async function loadPhotosInFolder(folderId) {
         gallery.innerHTML = ''
 
         if (res.data && res.data.length > 0) {
+            // 获取所有照片的 fileID
+            const fileIDs = res.data.map(photo => photo.fileID)
+
+            // 生成临时访问链接（有效期2小时）
+            let tempURLs = {}
+            try {
+                const tempURLResult = await cloudApp.getTempFileURL({
+                    fileList: fileIDs
+                })
+
+                // 将结果转换为 fileID -> tempFileURL 的映射
+                if (tempURLResult.fileList) {
+                    tempURLResult.fileList.forEach(item => {
+                        tempURLs[item.fileID] = item.tempFileURL
+                    })
+                }
+
+                console.log('临时访问链接已生成')
+            } catch (error) {
+                console.error('生成临时链接失败:', error)
+            }
+
+            // 显示照片
             res.data.forEach(photo => {
                 const photoDiv = document.createElement('div')
                 photoDiv.className = 'photo-item'
-                photoDiv.onclick = () => viewPhotoDetail(photo)
 
                 const img = document.createElement('img')
-                img.src = photo.url
+                // 使用临时链接，如果生成失败则使用原 fileID
+                img.src = tempURLs[photo.fileID] || photo.fileID
                 img.alt = photo.name || '家族照片'
+                img.onerror = function() {
+                    console.error('图片加载失败:', photo.name)
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect width="200" height="200" fill="%23F5E6D3"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%238B4513"%3E加载失败%3C/text%3E%3C/svg%3E'
+                }
 
                 const infoDiv = document.createElement('div')
                 infoDiv.className = 'photo-info'
@@ -151,6 +180,9 @@ async function loadPhotosInFolder(folderId) {
 
                 photoDiv.appendChild(img)
                 photoDiv.appendChild(infoDiv)
+
+                // 点击查看大图
+                photoDiv.onclick = () => viewPhotoDetail(photo, tempURLs[photo.fileID])
 
                 gallery.appendChild(photoDiv)
             })
@@ -177,9 +209,10 @@ function formatDate(dateString) {
 }
 
 // 查看照片详情（可以扩展为弹窗显示大图）
-function viewPhotoDetail(photo) {
-    // 简单实现：在新标签页打开图片
-    window.open(photo.url, '_blank')
+function viewPhotoDetail(photo, tempURL) {
+    // 使用临时链接打开图片
+    const urlToOpen = tempURL || photo.fileID
+    window.open(urlToOpen, '_blank')
 }
 
 // 切换上传照片模式
@@ -354,7 +387,7 @@ async function uploadPhotos() {
                     folderId: folderId,
                     folderName: folderName,
                     name: file.name,
-                    url: uploadResult.fileID,
+                    fileID: uploadResult.fileID,  // 保存 fileID 而不是 url
                     cloudPath: cloudPath,
                     uploadTime: new Date().toISOString()
                 }
