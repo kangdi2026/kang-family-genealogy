@@ -313,8 +313,8 @@ function showAddRootDialog() {
     const title = prompt('请输入对始祖的称呼（如：始祖、太祖）：', '始祖')
     if (title === null) return
 
-    const wivesInput = prompt('请输入夫人姓名（多个用顿号或逗号分隔）：')
-    const wives = wivesInput ? wivesInput.split(/[、，,]/).map(w => w.trim()).filter(w => w) : []
+    const wivesInput = prompt('请输入夫人姓名（可选，多个用顿号或逗号分隔，不填请直接点确定）：')
+    const wives = wivesInput && wivesInput.trim() ? wivesInput.split(/[、，,]/).map(w => w.trim()).filter(w => w) : []
 
     addMember({
         generation: 1,
@@ -333,8 +333,8 @@ function showAddChildDialog(parent) {
     const title = prompt('请输入称呼（如：长子、次子、长女等）：', '子')
     if (title === null) return
 
-    const wivesInput = prompt('请输入夫人姓名（多个用顿号或逗号分隔，无则留空）：')
-    const wives = wivesInput ? wivesInput.split(/[、，,]/).map(w => w.trim()).filter(w => w) : []
+    const wivesInput = prompt('请输入夫人姓名（可选，多个用顿号或逗号分隔，不填请直接点确定）：')
+    const wives = wivesInput && wivesInput.trim() ? wivesInput.split(/[、，,]/).map(w => w.trim()).filter(w => w) : []
 
     addMember({
         generation: parent.generation + 1,
@@ -357,8 +357,8 @@ function showEditMemberDialog(member) {
         const title = prompt('称呼：', member.title)
         if (title === null) return
 
-        const wivesInput = prompt('夫人姓名（多个用顿号或逗号分隔）：', member.wives ? member.wives.join('、') : '')
-        const wives = wivesInput ? wivesInput.split(/[、，,]/).map(w => w.trim()).filter(w => w) : []
+        const wivesInput = prompt('夫人姓名（可选，多个用顿号或逗号分隔，不填请直接点确定）：', member.wives ? member.wives.join('、') : '')
+        const wives = wivesInput && wivesInput.trim() ? wivesInput.split(/[、，,]/).map(w => w.trim()).filter(w => w) : []
 
         updateMember(member._id, {
             name: name.trim(),
