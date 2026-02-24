@@ -256,7 +256,10 @@
         <div class="paper-bg page-content">
             <div class="page-header traditional-border">
                 <h1 class="header-title">康氏家族世系图</h1>
-                <button class="back-button" onclick="showPage('home')">返回首页</button>
+                <div class="header-actions">
+                    <button class="back-button" onclick="showPage('home')">返回首页</button>
+                    <button class="edit-button" id="edit-tree-btn" onclick="toggleTreeEdit()">编辑</button>
+                </div>
             </div>
 
             <div class="tree-container">
@@ -319,6 +322,7 @@
     <script src="js/intro-edit.js"></script>
     <script src="js/generation-edit.js"></script>
     <script src="js/photos-manage.js"></script>
+    <script src="js/family-tree.js"></script>
     <script src="js/app.js"></script>
 
 </body>
